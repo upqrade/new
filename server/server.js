@@ -87,7 +87,7 @@ app.post('/api/login', async (req, res) => {
     const token = jwt.sign({ user }, JWT_SECRET_KEY);
     
     // Include the user's email in the response
-    res.json({ success: true, token, user: { email: user.email } });
+    res.json({ success: true, token, user: { email: user.email, name: user.name, phoneNumber: user.phoneNumber } });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal server error.' });
