@@ -49,7 +49,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/login', {
+      const response = await fetch('https://event-server2.onrender.com/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,8 +62,12 @@ const Login = () => {
       if (response.ok) {
         // Login successful
         localStorage.setItem('token', data.token); // Store the token in local storage
+        localStorage.setItem('userName', data.user.name); // Store the user's email
         localStorage.setItem('userEmail', data.user.email); // Store the user's email
-        window.location.href = "./getUserData/:qrNumber";
+        localStorage.setItem('userPhoneNumber', data.user.phoneNumber); // Store the user's email
+
+
+        window.location.href = `./getUserData/${qrNumber}`;
         console.log(data.message);
         setLoginError(false);
       } else {

@@ -17,6 +17,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PhoneNumberLogin from './Components/PhoneNumberLogin';
 import Login from './Components/Login';
 import DisplayPage from './Components/DisplayPage';
+import ScanQR from './Components/ScanQR';
 
 function App() {
   return (
@@ -24,9 +25,9 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<PhoneNumberLogin />} />
+          <Route path="/scanQR" element={<ScanQR/>}/>
           <Route path="/login" element={<Login />} />
 
-          {/* <Route path="/display/:qrNumber" element={({ match }) => <DisplayPage match={match} />} /> */}
           <Route path="/getUserData/:qrNumber" element={<DisplayPage />} />
 
         </Routes>

@@ -38,43 +38,6 @@ app.use(requestIp.mw({ attributeName: 'clientIp', headerName: 'X-Forwarded-For' 
 
 const JWT_SECRET_KEY = generateSecretKey();
 
-// // Middleware for verifying JWT
-// const authenticateJWT = async (req, res, next) => {
-//   const token = req.header('Authorization') || req.query.token; // Adjust to also check query parameter
-
-//   if (!token) {
-//     return res.status(401).json({ error: 'Unauthorized' });
-//   }
-
-//   try {
-//     // Modify to retrieve the token from localStorage
-//     // If you store the token with a key, replace 'your_token_key' with the actual key
-//     const localStorageToken = localStorage.getItem('token');
-
-//     if (!localStorageToken || localStorageToken !== token) {
-//       return res.status(401).json({ error: 'Unauthorized - Token mismatch' });
-//     }
-
-//     const decoded = await jwt.verify(token, JWT_SECRET_KEY);
-
-//     req.user = decoded.user;
-//     next();
-//   } catch (err) {
-//     if (err.name === 'TokenExpiredError') {
-//       return res.status(401).json({ error: 'Token expired' });
-//     }
-//     // return res.status(403).json({ error: 'Invalid token' });
-//   }
-// };
-
-// // Route for checking authentication
-// app.get('/api/check-auth', authenticateJWT, (req, res) => {
-//   console.log('Received Token:', req.header('Authorization'));
-//   return res.status(200).json({ message: 'Authentication successful' });
-// });
-
-
-
 app.post('/saveData', async (req, res) => {
   console.log('Request Headers:', req.headers);
 
@@ -124,7 +87,11 @@ app.post('/api/login', async (req, res) => {
     const token = jwt.sign({ user }, JWT_SECRET_KEY);
     
     // Include the user's email in the response
+    res.json({ success: true, token, user: { name: user.name } });
     res.json({ success: true, token, user: { email: user.email } });
+    res.json({ success: true, token, user: { phoneNumber: user.phoneNumber } });
+
+
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal server error.' });

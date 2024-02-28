@@ -10,7 +10,7 @@ const PhoneNumberLogin = () => {
 
   const handleChange = async () => {
     try {
-      const response = await fetch('http://localhost:3001/saveData', {
+      const response = await fetch('https://event-server2.onrender.com/saveData', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const PhoneNumberLogin = () => {
 
       const data = await response.json();
       console.log(data.message);  // Access the 'message' property
-      window.location.href = `./getUserData/${qrNumber}`;
+      window.location.href = "./scanQR";
 
 
       // Reset the form after handling the data (optional)
