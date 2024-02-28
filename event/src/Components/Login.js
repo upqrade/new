@@ -62,11 +62,8 @@ const Login = () => {
       if (response.ok) {
         // Login successful
         localStorage.setItem('token', data.token); // Store the token in local storage
-        localStorage.setItem('userName', data.user.name); // Store the user's email
         localStorage.setItem('userEmail', data.user.email); // Store the user's email
-        localStorage.setItem('userPhoneNumber', data.user.phoneNumber); // Store the user's email
-
-
+        
         window.location.href = `./getUserData/${qrNumber}`;
         console.log(data.message);
         setLoginError(false);
