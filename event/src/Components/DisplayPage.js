@@ -6,11 +6,12 @@ import emailjs from 'emailjs-com';
 const DisplayPage = () => {
   const [userData, setUserData] = useState(null);
   const { qrNumber } = useParams();
+  const [presentToken, setPresentToken] = useState(localStorage.getItem('token') || '');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://event-server2.onrender.com/getUserData/${qrNumber}`);
+        const response = await fetch(`http://localhost:3001/getUserData/${qrNumber}`);
         console.log('Response:', response);
 
         if (!response.ok) {
@@ -30,6 +31,37 @@ if (!contentType || !contentType.includes('application/json')) {
 
     fetchData();
   }, [qrNumber]);
+
+  const verifyToken = async () =>{
+    try {
+      const response = await fetch('http://localhost:3001/api/tokenVerify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ presentToken }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {// Store the token in local storage
+        // window.location.href="./admin";
+        return
+        console.log(response.message);
+        // setLoginError(false);
+      } else {
+        // Login failed
+        // setPresentToken('');
+        localStorage.setItem('token', '')
+        window.location.href="./admin";
+        console.log(response.message);
+        setLoginError(true);
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      // setLoginError(true);
+    }
+  }
 
   const handleSubmit = async () => {
     try {
@@ -58,9 +90,58 @@ if (!contentType || !contentType.includes('application/json')) {
       console.error('Error sending email:', error);
       alert('Failed to send email. Please try again.');
     }
+
+    try {
+      // Retrieve the email from localStorage
+      const userEmail = localStorage.getItem('userEmail');
+
+      if (!userEmail) {
+        console.error('User email not found in localStorage.');
+        alert('Failed to send email. User email not found.');
+        return;
+      }
+      const templateParams = {
+        email: userEmail,
+        // Add more template parameters as needed
+      };
+
+      const result = await emailjs.send(
+        'service_bnz3qy9',
+        'template_mophnb9',
+        templateParams,
+        'Acnzw1AS8KGhKspGo'
+      );
+
+      console.log(result);
+
+      // Handle success or failure
+      if (result.text === 'OK') {
+        alert('Email sent successfully!');
+      } else {
+        alert('Failed to send email.');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('Failed to send email. Please try again.');
+    }
+
+
   };
 
   
+
+  useEffect(() => {
+    // Check if the user has a valid token
+
+    if (!presentToken && presentToken.length < 10) {
+      // Redirect to login if no token is present
+      window.location.href = '/login';
+    }
+    
+    verifyToken();
+
+  }, []);
+
 
   return (
     <div style={{ color: 'white', textAlign: 'center', margin: 'auto', marginTop: '50px', marginBottom: '50px' }}>
