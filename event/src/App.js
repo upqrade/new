@@ -28,7 +28,7 @@ function App() {
           <Route path="/" element={<PhoneNumberLogin />} />
           <Route path="/scanQR" element={<ScanQR/>}/>
           <Route path="/login" element={<Login />} />
-          <Route path="/getData" element={<DisplayPage1/>} />
+          <Route path="/getData/:qrNumber" element={<DisplayPage1/>} />
           <Route path="/getUserData/:qrNumber" element={<DisplayPage />} />
 
         </Routes>
