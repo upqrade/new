@@ -67,7 +67,7 @@ const Login = () => {
         localStorage.setItem('userPhoneNumber', data.user.phoneNumber); // Store the user's email
 
 
-        window.location.href = `./getUserData/${qrNumber}`;
+        window.location.href = `./getData/${qrNumber}`;
         console.log(data.message);
         setLoginError(false);
       } else {

@@ -124,6 +124,21 @@ app.get('/getUserData/:qrNumber', async (req, res) => {
   }
 });
 
+app.get('/getData/:qrNumber', async (req, res) => {
+  const { qrNumber } = req.params;
+
+  try {
+    const userData = await UserData.findOne({ qrNumber });
+    if (!userData) {
+      return res.status(404).json({ error: 'User data not found.' });
+    }
+    return res.status(200).json(userData);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal server error.' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

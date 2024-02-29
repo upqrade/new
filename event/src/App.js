@@ -18,6 +18,7 @@ import PhoneNumberLogin from './Components/PhoneNumberLogin';
 import Login from './Components/Login';
 import DisplayPage from './Components/DisplayPage';
 import ScanQR from './Components/ScanQR';
+import DisplayPage1 from './Components/Display1';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           <Route path="/" element={<PhoneNumberLogin />} />
           <Route path="/scanQR" element={<ScanQR/>}/>
           <Route path="/login" element={<Login />} />
-
+          <Route path="/getData" element={<DisplayPage1/>} />
           <Route path="/getUserData/:qrNumber" element={<DisplayPage />} />
 
         </Routes>
