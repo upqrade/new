@@ -111,7 +111,9 @@ if (!contentType || !contentType.includes('application/json')) {
         return;
       }
       const templateParams = {
+        name: userName,
         email: userEmail,
+        phoneNumber: userPhoneNumber,
         to_email: userData.email,
         to_name: userData.name,
         to_phone_number: userData.phoneNumber
