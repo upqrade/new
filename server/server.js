@@ -175,7 +175,7 @@ app.post('/saveBoothData', async (req, res) => {
     const ipAddress = req.clientIp;
     console.log('User IP Address:', ipAddress);
 
-    const { boothName, boothNumber, boothLocation, email } = req.body;
+    const { boothName, boothNumber, phoneNumber, email } = req.body;
 
     if (boothNumber < 1) {
       return res.status(400).json({ error: 'Invalid boothNumber. It should be greater than 0.' });
