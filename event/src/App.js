@@ -19,6 +19,9 @@ import Login from './Components/Login';
 import DisplayPage from './Components/DisplayPage';
 import ScanQR from './Components/ScanQR';
 import DisplayPage1 from './Components/Display1';
+import BoothReg from './CBooth/BoothReg';
+import ScanBoothQR from './CBooth/ScanBoothQR';
+// import BoothDisp from './CBooth/BoothDisp'
 
 function App() {
   return (
@@ -30,6 +33,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/getData/:qrNumber" element={<DisplayPage1/>} />
           <Route path="/getUserData/:qrNumber" element={<DisplayPage />} />
+
+          <Route path="/boothReg" element={<BoothReg />} />
+          <Route path="/scanBoothQR" element={<ScanBoothQR/>}/>
+          {/* <Route path="/getBoothData/:boothNumber" element={<BoothDisp />} /> */}
 
         </Routes>
       </Router>

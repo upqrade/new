@@ -139,6 +139,87 @@ app.get('/getData/:qrNumber', async (req, res) => {
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+const boothDataSchema = new mongoose.Schema({
+  boothNumber: { type: Number, unique: true },
+  boothName: String,
+  phoneNumber: String,
+  registrationTime: String,
+  ipAddress: String,
+  email: String,
+});
+
+boothDataSchema.pre('save', function (next) {
+  const currentDate = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+  this.registrationTime = currentDate;
+  next();
+});
+
+const BoothData = mongoose.model('boothmanager', boothDataSchema);
+
+app.post('/saveBoothData', async (req, res) => {
+  console.log('Request Headers:', req.headers);
+
+  try {
+    const ipAddress = req.clientIp;
+    console.log('User IP Address:', ipAddress);
+
+    const { boothName, boothNumber, boothLocation, email } = req.body;
+
+    if (boothNumber < 1) {
+      return res.status(400).json({ error: 'Invalid boothNumber. It should be greater than 0.' });
+    }
+
+    const existingBoothRegistration = await BoothData.findOne({ boothNumber });
+
+    if (existingBoothRegistration) {
+      return res.status(400).json({ error: 'Booth Number is already registered.' });
+    }
+
+    const newBoothRegistration = new BoothData({
+      boothNumber,
+      boothName,
+      phoneNumber,
+      ipAddress,
+      email,
+    });
+
+    await newBoothRegistration.save();
+
+    return res.status(200).json({ message: 'Booth Registration successful.' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal server error.' });
+  }
+});
+
+app.get('/getBoothData/:boothNumber', async (req, res) => {
+  const { boothNumber } = req.params;
+
+  try {
+    const boothData = await BoothData.findOne({ boothNumber });
+    if (!boothData) {
+      return res.status(404).json({ error: 'Booth data not found.' });
+    }
+    return res.status(200).json(boothData);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal server error.' });
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
