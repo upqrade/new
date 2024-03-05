@@ -4,7 +4,7 @@ import emailjs from 'emailjs-com';
 
 
 const BoothDisp = () => {
-  const [userData, setUserData] = useState(null);
+  const [boothData, setBoothData] = useState(null);
   const [loginError, setLoginError] = useState(false); // Add this line
   const { boothNumber } = useParams();
   const [presentToken, setPresentToken] = useState(localStorage.getItem('token') || '');
@@ -12,7 +12,7 @@ const BoothDisp = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://event-server2.onrender.com/getBoothData/${qrNumber}`);
+        const response = await fetch(`https://event-server2.onrender.com/getBoothData/${boothNumber}`);
         console.log('Response:', response);
 
         if (!response.ok) {
@@ -24,9 +24,9 @@ if (!contentType || !contentType.includes('application/json')) {
 }
 
         const data = await response.json();
-        setUserData(data);
+        setBoothData(data);
       } catch (error) {
-        console.error('Error fetching user data:', error.message);
+        console.error('Error fetching booth data:', error.message);
       }
     };
 
@@ -73,9 +73,9 @@ if (!contentType || !contentType.includes('application/json')) {
           
     try {
       const templateParams = {
-        to_name: userData.name,
-        to_email: userData.email,
-        to_phone_number: userData.phoneNumber,
+        to_name: boothData.boothName,
+        to_email: boothData.email,
+        to_phone_number: boothData.phoneNumber,
         name: userName,
         email: userEmail,
         phone_number: userPhoneNumber,
@@ -114,9 +114,9 @@ if (!contentType || !contentType.includes('application/json')) {
         name: userName,
         email: userEmail,
         phoneNumber: userPhoneNumber,
-        to_email: userData.email,
-        to_name: userData.name,
-        to_phone_number: userData.phoneNumber
+        to_email: boothData.email,
+        to_name: boothData.boothName,
+        to_phone_number: boothData.phoneNumber
         // Add more template parameters as needed
       };
 
@@ -160,20 +160,20 @@ if (!contentType || !contentType.includes('application/json')) {
 
   return (
     <div style={{ color: 'white', textAlign: 'center', margin: 'auto', marginTop: '50px', marginBottom: '50px' }}>
-      {userData ? (
+      {boothData ? (
         <div>
-          <h1>User Details</h1>
-          <p>Name: {userData.name}</p>
-          <p>Phone Number: {userData.phoneNumber}</p>
-          <p>Email: {userData.email}</p>
-          <p>QR Number: {userData.qrNumber}</p>
+          <h1>Booth Details</h1>
+          <p>Name: {boothData.boothName}</p>
+          <p>Phone Number: {boothData.phoneNumber}</p>
+          <p>Email: {boothData.email}</p>
+          <p>Booth Number: {boothData.boothNumber}</p>
           <button className='btn-btn primary' onClick={handleSubmit}>Connect</button>
         </div>
       ) : (
-        <p>Not Registered Yet...</p>
+        <p>Booth Not Registered Yet...</p>
       )}
     </div>
   );
 };
 
-export default DisplayPage;
+export default BoothDisp;
