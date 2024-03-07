@@ -21,11 +21,14 @@ import ScanQR from './Components/ScanQR';
 import DisplayPage1 from './Components/Display1';
 import BoothReg from './CBooth/BoothReg';
 import ScanBoothQR from './CBooth/ScanBoothQR';
-import BoothDisp from './CBooth/BoothDisp'
+import BoothDisp from './CBooth/BoothDisp';
+import Header from './UpQRade_Components/Header';
+import Footer from './UpQRade_Components/Footer';
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <Router>
         <Routes>
           <Route path="/" element={<PhoneNumberLogin />} />
@@ -40,6 +43,7 @@ function App() {
 
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 }
