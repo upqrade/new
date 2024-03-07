@@ -1,4 +1,5 @@
 // server.js
+require('dotenv').config(); // Load environment variables from .env file
 const express = require('express');
 const mongoose = require('mongoose');
 const requestIp = require('request-ip');
@@ -11,7 +12,7 @@ const { generateSecretKey } = require('./utils'); // Adjust the path accordingly
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-mongoose.connect('mongodb+srv://saniton7navelkar:08322777636@cluster0.hiiwdnw.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const userDataSchema = new mongoose.Schema({
   qrNumber: { type: Number, unique: true },
@@ -36,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestIp.mw({ attributeName: 'clientIp', headerName: 'X-Forwarded-For' }));
 
-const JWT_SECRET_KEY = generateSecretKey();
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 app.post('/saveData', async (req, res) => {
   console.log('Request Headers:', req.headers);
