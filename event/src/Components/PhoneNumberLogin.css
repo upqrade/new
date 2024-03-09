@@ -2,26 +2,64 @@
 
 body,
 html {
-  height: 100%;
+  /* height: 100%; */
   margin: 0;
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
 }
 
 body {
-  background-color: #0f0f1a;
+  background: url("https://business.fsu.edu/sites/g/files/upcbnu1771/files/DSC_4265.jpg") center center fixed;
+  background-size: cover; /* Ensures that the background image covers the entire body */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin: 0; /* Removes default margin */
+  /*height: 100vh;  Ensures the body takes up the full height of the viewport */
 }
+
 
 .ph_no h1 {
   text-align: center;
 }
 
 .ph_no {
-  margin-bottom: 20px;
+  display: flex;
+  background-color: #00000098; /* Adjust the RGB values and alpha channel as needed */
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-inline: 25%;
   font-size: 20px;
   color: white;
+  padding: 30px;
+  border-radius: 10px; /* Adjust the radius as needed */
+  text-align: center;
+  flex-direction: column;
 }
+
+ .padding{
+  padding: 10px;
+ }
+ .ph_no input {
+  padding: 10px ;
+  border-radius: 10px;
+  border: none;
+ width: 100%;
+ }
+
+ .ph_no label{
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+ }
+
+ .ph_no button{
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+ }
+ 
+ 

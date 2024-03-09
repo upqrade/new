@@ -1,17 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
-// import PhoneNumberLogin from './Components/PhoneNumberLogin';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <PhoneNumberLogin />
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PhoneNumberLogin from './Components/PhoneNumberLogin';
@@ -44,6 +30,7 @@ function App() {
         </Routes>
       </Router>
       <Footer />
+
     </div>
   );
 }

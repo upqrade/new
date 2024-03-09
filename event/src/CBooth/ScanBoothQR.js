@@ -1,9 +1,10 @@
 import React from 'react'
+import './BoothReg.css'
 
-export default function ScanQR() {
+export default function ScanBoothQR() {
   return (
-    <div style={{color: '#fff'}}>
-      <h2>Scan Your Booth QR code to see your details.</h2>
+    <div className="ph_no">
+      <h2 style={{padding: '100px'}}>Scan the QR code to see the details.</h2>
     </div>
   )
 }

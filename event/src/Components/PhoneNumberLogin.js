@@ -42,7 +42,8 @@ const PhoneNumberLogin = () => {
     <div className="ph_no">
       <h1>Registration</h1>
       <form>
-        <label htmlFor="name_reg">Name:</label>
+        <div className='padding'>
+          <label htmlFor="name_reg">Name:</label>
         <input
           type="text"
           id="name_reg"
@@ -50,8 +51,8 @@ const PhoneNumberLogin = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-        /><br />
-
+        /><br /></div>
+<div className='padding'>
         <label htmlFor="phone_number_reg">Phone Number:</label>
         <input
           type="tel"
@@ -60,8 +61,8 @@ const PhoneNumberLogin = () => {
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
           required
-        /><br />
-
+        /><br /></div>
+<div className='padding'>
         <label htmlFor="email_reg">Email:</label>
         <input
           type="email"
@@ -70,8 +71,9 @@ const PhoneNumberLogin = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-        /><br />
+        /><br /></div>
 
+<div className='padding'>
 
         <label htmlFor="qr_number_reg">QR Number:</label>
         <input
@@ -81,13 +83,13 @@ const PhoneNumberLogin = () => {
           value={qrNumber}
           onChange={(e) => setQrNumber(e.target.value)}
           required
-        /><br />
+        /><br /></div>
 
         <button type="button" onClick={handleChange}>
           Submit
         </button>
       </form>
-      <p>Already Registered? <a href="./login">Login</a></p>
+      <p>Already Registered? <a href="./login" style={{ color: 'navy', textDecoration: 'none', transition: 'color 0.3s ease, font-weight 0.3s ease', fontWeight: 'normal' }} onMouseEnter={(e) => e.target.style.color = 'maroon'} onMouseLeave={(e) => {e.target.style.color = 'navy'; e.target.style.fontWeight = 'normal';}}>Login</a></p>
     </div>
   );
 };

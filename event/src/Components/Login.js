@@ -1,45 +1,7 @@
 // login.js
 
 import React, { useState } from 'react';
-
-const styles = {
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      padding: '20px',
-      border: '1px solid #ccc',
-      borderRadius: '8px',
-      maxWidth: '300px',
-      margin: 'auto',
-      marginTop: '50px',
-      backgroundColor: '#fff',
-    },
-    title: {
-      fontSize: '1.5em',
-      marginBottom: '20px',
-    },
-    form: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    label: {
-      marginBottom: '10px',
-      fontSize: '1em',
-    },
-    input: {
-      padding: '8px',
-      fontSize: '1em',
-    },
-    button: {
-      backgroundColor: '#4CAF50',
-      color: 'white',
-      padding: '10px',
-      fontSize: '1em',
-      cursor: 'pointer',
-    },
-  };
-
+import './PhoneNumberLogin.css';
 
 const Login = () => {
   const [name, setName] = useState('');
@@ -83,19 +45,23 @@ const Login = () => {
 
   
     return (
-      <div style={{ color: '#fff' }}>
-        <h2>Login</h2>
+      <div className="ph_no">
+      <h2>Login</h2>
         <form>
+        <div className='padding'>
           <label>
             Name:
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
           </label>
-          <br />
+          </div>
+
+          <div className='padding'>
           <label>
             QR Number:
             <input type="text" value={qrNumber} onChange={(e) => setQRNumber(e.target.value)} />
           </label>
-          <br />
+          </div>
+          
           <button type="button" onClick={handleLogin}>
             Login
           </button>

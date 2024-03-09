@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 // Styled components for footer elements
 const FooterContainer = styled.div`
+width:100vw;
+  padding-inline: 20px; /* Adjust the padding as needed */
   height: 100px;
   position: bottom;
   overflow: hidden;
@@ -11,8 +13,9 @@ const FooterContainer = styled.div`
   color: white;
   display: flex;
   align-items: center;
+  border-radius: 18px;
 
-  @media screen and (max-width: 730px) {
+  @media screen and (max-width: 200px) {
     height: 74px;
   }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './PhoneNumberLogin.css'
 
 const DisplayPage1 = () => {
   const [userData, setUserData] = useState(null);
@@ -30,7 +31,7 @@ const DisplayPage1 = () => {
   }, [qrNumber]);
 
   return (
-    <div style={{ color: 'white', textAlign: 'center', margin: 'auto', marginTop: '50px', marginBottom: '50px' }}>
+    <div className="ph_no">
       {userData ? (
         <div>
           <h1>User Details</h1>

@@ -42,6 +42,7 @@ const BoothReg = () => {
     <div className="ph_no">
       <h1>Booth Registration</h1>
       <form>
+      <div className='padding'>
         <label htmlFor="booth_name_reg">Booth Name:</label>
         <input
           type="text"
@@ -51,7 +52,9 @@ const BoothReg = () => {
           onChange={(e) => setBoothName(e.target.value)}
           required
         /><br />
+        </div>
 
+        <div className='padding'>
         <label htmlFor="phone_number_reg">Phone Number:</label>
         <input
           type="tel"
@@ -61,7 +64,9 @@ const BoothReg = () => {
           onChange={(e) => setPhoneNumber(e.target.value)}
           required
         /><br />
+        </div>
 
+        <div className='padding'>
         <label htmlFor="email_reg">Email:</label>
         <input
           type="email"
@@ -71,8 +76,9 @@ const BoothReg = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         /><br />
+        </div>
 
-
+        <div className='padding'>
         <label htmlFor="booth_number_reg">Booth Number:</label>
         <input
           type="number"
@@ -82,12 +88,12 @@ const BoothReg = () => {
           onChange={(e) => setBoothNumber(e.target.value)}
           required
         /><br />
+        </div>
 
         <button type="button" onClick={handleChange}>
           Submit
         </button>
       </form>
-      <p>Already Registered? <a href="./boothlogin">Login</a></p>
     </div>
   );
 };

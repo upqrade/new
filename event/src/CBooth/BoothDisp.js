@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import emailjs from 'emailjs-com';
-
+import './BoothReg.css'
 
 const BoothDisp = () => {
   const [boothData, setBoothData] = useState(null);
@@ -159,7 +159,7 @@ if (!contentType || !contentType.includes('application/json')) {
 
 
   return (
-    <div style={{ color: 'white', textAlign: 'center', margin: 'auto', marginTop: '50px', marginBottom: '50px' }}>
+    <div className="ph_no">
       {boothData ? (
         <div>
           <h1>Booth Details</h1>

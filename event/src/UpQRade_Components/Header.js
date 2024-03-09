@@ -11,10 +11,10 @@ const HeaderContainer = styled.nav`
   padding: 15px;
   padding-inline: 20px;
   border-radius: 18px;
-  margin: 10px;
-  background-color: #6b0b0b3a;
+  margin: 0px 10px;
+  background-color: rgba(107, 11, 11, 0.9); 
   overflow-x: hidden;
-`;
+  `;
 
 const Logo = styled.div`
   img {
