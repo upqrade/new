@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: url("https://business.fsu.edu/sites/g/files/upcbnu1771/files/DSC_4265.jpg") center center fixed;
+  /* background: url("https://business.fsu.edu/sites/g/files/upcbnu1771/files/DSC_4265.jpg") center center fixed; */
   background-size: cover; /* Ensures that the background image covers the entire body */
   display: flex;
   align-items: center;
@@ -54,6 +54,26 @@ body {
   margin-bottom: 5px;
   text-align: left;
  }
+
+ table {
+  border-collapse: collapse;
+  width: 100%;
+  color: white;
+}
+
+table, th, td {
+  border: 1px solid white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+tr {
+  border-bottom: 2px solid white;
+}
+ 
 
  .ph_no button{
   padding: 10px 10px;

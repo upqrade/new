@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import emailjs from 'emailjs-com';
-import './BoothReg.css'
+import './BoothReg.css';
 
 const BoothDisp = () => {
   const [boothData, setBoothData] = useState(null);
-  const [loginError, setLoginError] = useState(false); // Add this line
+  const [loginError, setLoginError] = useState(false);
   const { boothNumber } = useParams();
   const [presentToken, setPresentToken] = useState(localStorage.getItem('token') || '');
 
@@ -18,10 +18,11 @@ const BoothDisp = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
         const contentType = response.headers.get('content-type');
-if (!contentType || !contentType.includes('application/json')) {
-  throw new Error('Invalid content type. Expected JSON.');
-}
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new Error('Invalid content type. Expected JSON.');
+        }
 
         const data = await response.json();
         setBoothData(data);
@@ -33,7 +34,7 @@ if (!contentType || !contentType.includes('application/json')) {
     fetchData();
   }, [boothNumber]);
 
-  const verifyToken = async () =>{
+  const verifyToken = async () => {
     try {
       const response = await fetch('https://event-server2.onrender.com/api/tokenVerify', {
         method: 'POST',
@@ -45,32 +46,24 @@ if (!contentType || !contentType.includes('application/json')) {
 
       const data = await response.json();
 
-      if (response.ok) {// Store the token in local storage
-        // window.location.href="./admin";
-        return
-        console.log(response.message);
-        // setLoginError(false);
+      if (response.ok) {
+        return;
       } else {
-        // Login failed
-        // setPresentToken('');
-        localStorage.setItem('token', '')
-        window.location.href="./admin";
-        console.log(response.message);
+        localStorage.setItem('token', '');
+        window.location.href = './admin';
         setLoginError(true);
       }
     } catch (error) {
       console.error('Error during login:', error);
       setLoginError(true);
     }
-  }
+  };
 
   const handleSubmit = async () => {
-          // Retrieve the email from localStorage
-          const userEmail = localStorage.getItem('userEmail');
-          const userName = localStorage.getItem('userName');
-          const userPhoneNumber = localStorage.getItem('userPhoneNumber');
+    const userEmail = localStorage.getItem('userEmail');
+    const userName = localStorage.getItem('userName');
+    const userPhoneNumber = localStorage.getItem('userPhoneNumber');
 
-          
     try {
       const templateParams = {
         to_name: boothData.boothName,
@@ -79,8 +72,6 @@ if (!contentType || !contentType.includes('application/json')) {
         name: userName,
         email: userEmail,
         phone_number: userPhoneNumber,
-
-        // Add more template parameters as needed
       };
 
       const result = await emailjs.send(
@@ -92,7 +83,6 @@ if (!contentType || !contentType.includes('application/json')) {
 
       console.log(result);
 
-      // Handle success or failure
       if (result.text === 'OK') {
         alert('Email sent successfully!');
       } else {
@@ -104,7 +94,6 @@ if (!contentType || !contentType.includes('application/json')) {
     }
 
     try {
-
       if (!userEmail) {
         console.error('User email not found in localStorage.');
         alert('Failed to send email. User email not found.');
@@ -116,8 +105,7 @@ if (!contentType || !contentType.includes('application/json')) {
         phoneNumber: userPhoneNumber,
         to_email: boothData.email,
         to_name: boothData.boothName,
-        to_phone_number: boothData.phoneNumber
-        // Add more template parameters as needed
+        to_phone_number: boothData.phoneNumber,
       };
 
       const result = await emailjs.send(
@@ -129,7 +117,6 @@ if (!contentType || !contentType.includes('application/json')) {
 
       console.log(result);
 
-      // Handle success or failure
       if (result.text === 'OK') {
         alert('Email sent successfully!');
       } else {
@@ -139,38 +126,48 @@ if (!contentType || !contentType.includes('application/json')) {
       console.error('Error sending email:', error);
       alert('Failed to send email. Please try again.');
     }
-
-
   };
 
-  
-
   useEffect(() => {
-    // Check if the user has a valid token
-
     if (!presentToken && presentToken.length < 10) {
-      // Redirect to login if no token is present
       window.location.href = '/login';
     }
-    
+
     verifyToken();
-
   }, []);
-
 
   return (
     <div className="ph_no">
       {boothData ? (
         <div>
           <h1>Booth Details</h1>
-          <p>Name: {boothData.boothName}</p>
-          <p>Phone Number: {boothData.phoneNumber}</p>
-          <p>Email: {boothData.email}</p>
-          <p>Booth Number: {boothData.boothNumber}</p>
-          <button className='btn-btn primary' onClick={handleSubmit}>Connect</button>
+          <table>
+            <tbody>
+              <tr>
+                <td>Name:</td>
+                <td>{boothData.boothName}</td>
+              </tr>
+              <tr>
+                <td>Phone Number:</td>
+                <td>{boothData.phoneNumber}</td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td>{boothData.email}</td>
+              </tr>
+              <tr>
+                <td>Booth Number:</td>
+                <td>{boothData.boothNumber}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <button className="btn-btn primary" onClick={handleSubmit}>
+            Connect
+          </button>
         </div>
       ) : (
-        <p>Booth Not Registered Yet...</p>
+        <p style={{padding: '120px'}}>Booth Not Registered Yet...</p>
       )}
     </div>
   );

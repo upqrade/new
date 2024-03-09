@@ -55,6 +55,26 @@ body {
   text-align: left;
  }
 
+ table {
+  border-collapse: collapse;
+  width: 100%;
+  color: white;
+}
+
+table, th, td {
+  border: 1px solid white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+tr {
+  border-bottom: 2px solid white;
+}
+ 
+
  .ph_no button{
   padding: 10px 10px;
   border-radius: 10px;

@@ -35,16 +35,35 @@ const DisplayPage1 = () => {
       {userData ? (
         <div>
           <h1>User Details</h1>
-          <p>Name: {userData.name}</p>
-          <p>Phone Number: {userData.phoneNumber}</p>
-          <p>Email: {userData.email}</p>
-          <p>QR Number: {userData.qrNumber}</p>
+          <table>
+            <tbody>
+              <tr>
+                <td>Name:</td>
+                <td>{userData.name}</td>
+              </tr>
+              <tr>
+                <td>Phone Number:</td>
+                <td>{userData.phoneNumber}</td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td>{userData.email}</td>
+              </tr>
+              <tr>
+                <td>QR Number:</td>
+                <td>{userData.qrNumber}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+
         </div>
       ) : (
-        <p>Not Registered Yet...</p>
+        <p style={{padding: '120px'}}>Not Registered Yet...</p>
       )}
     </div>
   );
 };
+
 
 export default DisplayPage1;
