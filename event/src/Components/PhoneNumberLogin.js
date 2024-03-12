@@ -43,7 +43,7 @@ const PhoneNumberLogin = () => {
       <h1>Registration</h1>
       <form>
         <div className='padding'>
-          <label htmlFor="name_reg">Name:</label>
+          <label htmlFor="name_reg"><center>Name:</center></label>
         <input
           type="text"
           id="name_reg"
@@ -53,7 +53,7 @@ const PhoneNumberLogin = () => {
           required
         /><br /></div>
 <div className='padding'>
-        <label htmlFor="phone_number_reg">Phone Number:</label>
+        <label htmlFor="phone_number_reg"><center>Phone Number:</center></label>
         <input
           type="tel"
           id="phone_number_reg"
@@ -63,7 +63,7 @@ const PhoneNumberLogin = () => {
           required
         /><br /></div>
 <div className='padding'>
-        <label htmlFor="email_reg">Email:</label>
+        <label htmlFor="email_reg"><center>Email:</center></label>
         <input
           type="email"
           id="email_reg"
@@ -74,22 +74,46 @@ const PhoneNumberLogin = () => {
         /><br /></div>
 
 <div className='padding'>
+  <label htmlFor="qr_number_reg"><center>QR Number:</center></label>
+  <input
+    type="number"
+    id="qr_number_reg"
+    name="qr_number"
+    value={qrNumber}
+    onChange={(e) => setQrNumber(e.target.value)}
+    required
+    className="decrease-size" // Add this class to the input field
+  />
+</div>
 
-        <label htmlFor="qr_number_reg">QR Number:</label>
-        <input
-          type="number"
-          id="qr_number_reg"
-          name="qr_number"
-          value={qrNumber}
-          onChange={(e) => setQrNumber(e.target.value)}
-          required
-        /><br /></div>
-
-        <button type="button" onClick={handleChange}>
+<div className='padding'>
+<button type="button" onClick={handleChange}>
           Submit
         </button>
+</div>
+
       </form>
-      <p>Already Registered? <a href="./login" style={{ color: 'navy', textDecoration: 'none', transition: 'color 0.3s ease, font-weight 0.3s ease', fontWeight: 'normal' }} onMouseEnter={(e) => e.target.style.color = 'maroon'} onMouseLeave={(e) => {e.target.style.color = 'navy'; e.target.style.fontWeight = 'normal';}}>Login</a></p>
+<p>
+  Already Registered?{' '}
+  <a
+    href="./login"
+    style={{
+      color: 'white',
+      textDecoration: 'none',
+      transition: 'color 0.3s ease, font-weight 0.3s ease',
+      fontWeight: 900,
+    }}
+    onMouseEnter={(e) => e.target.style.color = 'blue'}
+    onMouseLeave={(e) => {
+      e.target.style.color = 'white';
+      e.target.style.fontWeight = 'normal';
+    }}
+  >
+    Login
+  </a>
+</p>
+
+
     </div>
   );
 };

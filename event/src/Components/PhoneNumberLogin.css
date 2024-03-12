@@ -2,7 +2,6 @@
 
 body,
 html {
-  /* height: 100%; */
   margin: 0;
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
@@ -10,14 +9,16 @@ html {
 
 body {
   background: url("https://business.fsu.edu/sites/g/files/upcbnu1771/files/DSC_4265.jpg") center center fixed;
-  background-size: cover; /* Ensures that the background image covers the entire body */
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 0; /* Removes default margin */
-  /*height: 100vh;  Ensures the body takes up the full height of the viewport */
+  margin: 0;
+  -webkit-backdrop-filter: blur(5px); /* For older versions of Safari/Chrome */
+  backdrop-filter: blur(5px);
 }
+
 
 
 .ph_no h1 {
@@ -26,36 +27,38 @@ body {
 
 .ph_no {
   display: flex;
-  background-color: #00000098; /* Adjust the RGB values and alpha channel as needed */
+  background-color: #00000098;
   justify-content: center;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin: 10px;
   margin-inline: 25%;
   font-size: 20px;
   color: white;
   padding: 30px;
-  border-radius: 10px; /* Adjust the radius as needed */
+  border-radius: 10px;
   text-align: center;
   flex-direction: column;
 }
 
- .padding{
+.padding {
+  display:flex;
+  flex-direction: column;
   padding: 10px;
- }
- .ph_no input {
-  padding: 10px ;
+}
+
+.ph_no input {
+  padding: 10px;
   border-radius: 10px;
   border: none;
- width: 100%;
- }
+  width: calc(100% - 20px);
+}
 
- .ph_no label{
+.ph_no label {
   display: block;
   margin-bottom: 5px;
   text-align: left;
- }
+}
 
- table {
+table {
   border-collapse: collapse;
   width: 100%;
   color: white;
@@ -73,13 +76,28 @@ th, td {
 tr {
   border-bottom: 2px solid white;
 }
- 
 
- .ph_no button{
-  padding: 10px 10px;
-  border-radius: 10px;
+.ph_no button {
+  padding: 15px 40px; /* Adjust padding to increase size */
+  border-radius: 30px;
   border: none;
   font-size: 15px;
- }
- 
- 
+  background-color: maroon;
+  color: white;
+}
+
+/* Media query for mobile optimization and smaller screens */
+@media screen and (max-width: 768px) {
+  .ph_no {
+    margin: 5%;
+    font-size: 16px;
+  }
+
+  .ph_no button {
+    font-size: 20px;
+  }
+
+  table, th, td {
+    font-size: 14px;
+  }
+}

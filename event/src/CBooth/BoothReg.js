@@ -43,7 +43,7 @@ const BoothReg = () => {
       <h1>Booth Registration</h1>
       <form>
       <div className='padding'>
-        <label htmlFor="booth_name_reg">Booth Name:</label>
+        <label htmlFor="booth_name_reg"><center>Booth Name:</center></label>
         <input
           type="text"
           id="booth_name_reg"
@@ -55,7 +55,7 @@ const BoothReg = () => {
         </div>
 
         <div className='padding'>
-        <label htmlFor="phone_number_reg">Phone Number:</label>
+        <label htmlFor="phone_number_reg"><center>Phone Number:</center></label>
         <input
           type="tel"
           id="phone_number_reg"
@@ -67,7 +67,7 @@ const BoothReg = () => {
         </div>
 
         <div className='padding'>
-        <label htmlFor="email_reg">Email:</label>
+        <label htmlFor="email_reg"><center>Email:</center></label>
         <input
           type="email"
           id="email_reg"
@@ -79,7 +79,7 @@ const BoothReg = () => {
         </div>
 
         <div className='padding'>
-        <label htmlFor="booth_number_reg">Booth Number:</label>
+        <label htmlFor="booth_number_reg"><center>Booth Number:</center></label>
         <input
           type="number"
           id="booth_number_reg"
@@ -87,6 +87,7 @@ const BoothReg = () => {
           value={boothNumber}
           onChange={(e) => setBoothNumber(e.target.value)}
           required
+          className="decrease-size" // Add this class to the input field
         /><br />
         </div>
 

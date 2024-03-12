@@ -1,7 +1,6 @@
-// login.js
-
 import React, { useState } from 'react';
-import './PhoneNumberLogin.css';
+import '../login.css';
+
 
 const Login = () => {
   const [name, setName] = useState('');
@@ -50,16 +49,17 @@ const Login = () => {
         <form>
         <div className='padding'>
           <label>
-            Name:
+           Name:
+            </label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-          </label>
           </div>
 
           <div className='padding'>
           <label>
-            QR Number:
+          QR Number:
+            </label>
+
             <input type="text" value={qrNumber} onChange={(e) => setQRNumber(e.target.value)} />
-          </label>
           </div>
           
           <button type="button" onClick={handleLogin}>
