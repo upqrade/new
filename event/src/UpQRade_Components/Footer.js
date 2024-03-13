@@ -14,17 +14,20 @@ width:100vw;
   display: flex;
   align-items: center;
   border-radius: 18px;
-
+  margin-bottom: 0;
   @media screen and (max-width: 200px) {
     height: 74px;
+    margin-bottom: 0;
   }
 
   @media screen and (max-width: 470px) {
     height: 64px;
+    margin-bottom: 0;
   }
 
   @media screen and (max-width: 330px) {
     height: 54px;
+    margin-bottom: 0;
   }
 `;
 
@@ -39,14 +42,17 @@ const EmailContainer = styled.div`
   @media screen and (max-width: 730px) {
     font-size: 12px;
     margin-left: 5px;
+    
   }
 
   @media screen and (max-width: 470px) {
     font-size: 10px;
+   
   }
 
   @media screen and (max-width: 330px) {
     font-size: 8px;
+    
   }
 `;
 

@@ -74,9 +74,15 @@
   
   /* Media query for mobile optimization and smaller screens */
   @media screen and (max-width: 768px) {
+    body{
+      margin-bottom: 0;
+    margin-top: 0;
+    }
     .ph_no {
       margin: 10%;
       font-size: 16px;
+      height: 100;
+      margin-bottom: 0;
     }
   
     .ph_no button {
@@ -152,9 +158,14 @@ tr {
 
 /* Media query for mobile optimization and smaller screens */
 @media screen and (max-width: 768px) {
+  body{
+    margin-bottom: 0;
+  margin-top: 0;
+  }
   .ph_no {
     margin: 5%;
     font-size: 16px;
+    margin-bottom: 0;
   }
 
   .ph_no button {
@@ -166,4 +177,82 @@ tr {
   td {
     font-size: 14px;
   }
+}
+
+
+/* * Media query for devices up to 600px * */
+@media screen and (max-width: 600px) {
+  body{
+    margin-bottom: 0;
+  margin-top: 0;
+  }
+  .ph_no {
+    margin: 5%;
+    font-size: 16px;
+    
+  }
+
+  .ph_no button {
+    font-size: 14px;
+  }
+
+  table, th, td {
+    font-size: 14px;
+  }
+}
+
+/* Media query for devices between 601px and 768px */
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  body{
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .ph_no {
+    margin: 8%;
+    font-size: 18px;
+    height: 100%;
+  
+  }
+}
+
+/* Media query for devices between 769px and 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  body{
+    margin-bottom: 0;
+  margin-top: 0;
+  }
+  .ph_no {
+    margin: 12%;
+    font-size: 20px;
+    height: 100%;
+
+    
+  }
+}
+
+@media screen and (width: 720px) and (height: 1600px) {
+  /* Styles specific to the viewport size of 720x1600 */
+  body {
+    margin-bottom: 0;
+  margin-top: 0;
+  }
+
+  .ph_no {
+    margin: 12%;
+    font-size: 20px;
+    height: 100%;
+
+    
+  }
+  /* Add more styles for other elements as needed */
+}
+
+@media screen and (width: 412px) and (height: 915px) {
+  /* Styles specific to the viewport size of 412x915 */
+  body {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  /* Add more styles for other elements as needed */
 }

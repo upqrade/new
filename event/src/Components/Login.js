@@ -49,14 +49,14 @@ const Login = () => {
         <form>
         <div className='padding'>
           <label>
-           Name:
+            <center>Name:</center>
             </label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
 
           <div className='padding'>
           <label>
-          QR Number:
+          <center>QR Number:</center>
             </label>
 
             <input type="text" value={qrNumber} onChange={(e) => setQRNumber(e.target.value)} />
